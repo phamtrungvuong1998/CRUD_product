@@ -110,7 +110,7 @@ $(document).ready(function () {
 
     $(".btn_del_product").click(function () { 
         var id = $(this).data("id");
-        var url = "Product/delete_product"; 
+        var url = "/Product/delete_product"; 
         $.ajax({
             type: "POST",
             url: url,

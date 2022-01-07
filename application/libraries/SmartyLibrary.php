@@ -11,7 +11,6 @@ function __construct() {
     $this->setTemplateDir(APPPATH . 'views');
     $this->setCompileDir(APPPATH . 'cache/smarty_templates_cache');
     $this->setCacheDir(APPPATH . 'cache/smarty_cache');
-    $this->caching = 1;
 }
 
 

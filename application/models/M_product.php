@@ -9,10 +9,11 @@ class M_product extends CI_Model
     }
 
     public function get_list($page)
-    {
+    {   
         $data = [];
-        $data['total'] =  $this->db->select('id')->get('product')->result_array();  
+        $data['total'] =  $this->db->select('id')->get('product')->num_rows();  
         $data['list'] = $this->db->select()->limit(3,$page)->order_by('id','DESC')->get('product')->result_array();
+
         return $data;
     }
 

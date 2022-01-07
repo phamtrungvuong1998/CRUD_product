@@ -40,18 +40,16 @@ class Product extends CI_Controller
 		$page1 = ($page - 1) * 3;
 		$data['title'] = "Danh sách sản phẩm";
 		$data['content'] = 'product/list_product.tpl';
-
+		
 		$data_model = $this->M_product->get_list($page1);
 		$data['list'] = $data_model['list'];
-
-		$total_page = round(count($data_model['total']) / 3);
+		$total_page = round($data_model['total'] / 3);
 		if ($page > $total_page) {
 			redirect("/danh-sach-san-pham/1");
 		}
 		$config['base_url'] = base_url() . 'danh-sach-san-pham/';
-		$config['total_rows'] = count($data_model['total']);
+		$config['total_rows'] = $data_model['total'];
 		$config['per_page'] = 3;
-
 		// custom paging configuration
 		$config['num_links'] = 5;
 		$config['use_page_numbers'] = TRUE;
@@ -68,7 +66,7 @@ class Product extends CI_Controller
 		$config['prev_tag_open'] = '<li class="page-item">';
 		$config['prev_tag_close'] = '</li>';
 
-		$config['cur_tag_open'] = '<li class=""><span class="page-link">';
+		$config['cur_tag_open'] = '<li class=""><span class="page-link" style="background: #3071a9; color: white">';
 		$config['cur_tag_close'] = '</span></li>';
 
 		$config['num_tag_open'] = '<li class="page-item">';
@@ -76,6 +74,7 @@ class Product extends CI_Controller
 
 		$this->pagination->initialize($config);
 		$data['links'] = $this->pagination->create_links();
+
 		$this->smarty->assign('data', $data);
 		$this->smarty->display('template/index.tpl');
 	}
@@ -145,5 +144,10 @@ class Product extends CI_Controller
 		$data['title'] = "Thêm sản phẩm";
 		$this->smarty->assign('data', $data);
 		$this->smarty->display('test.tpl');
+	}
+
+	public function test()
+	{
+		echo "Trang chủ";
 	}
 }
