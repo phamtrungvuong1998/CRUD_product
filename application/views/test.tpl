@@ -1,0 +1,1 @@
+{extends file="template/index.tpl"}
